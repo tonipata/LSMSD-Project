@@ -32,7 +32,7 @@ public class LoginService implements ILoginService {
         String username=registrationDTO.getUsername();
         String password=registrationDTO.getPassword();
         String email=registrationDTO.getEmail();
-        User u=loginRepository.findByUsername(username);
+        //User u=loginRepository.findByUsername(username);
         User existingUser = loginRepository.findByUsername(username);
 
         // If the user with the same username exists, return false
