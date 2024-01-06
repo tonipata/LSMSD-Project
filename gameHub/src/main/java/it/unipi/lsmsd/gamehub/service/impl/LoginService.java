@@ -41,9 +41,8 @@ public class LoginService implements ILoginService {
         }
 
         // If the user with the same username doesn't exist, you can proceed with registration logic
-        // For example, you might want to create a new User object and save it to the database
-
-        // Assuming you have a User class and a UserRepository (similar to LoginRepository)
+        // We want to create a new User object and save it to the database
+        
         User newUser = new User();
         newUser.setName(name);
         newUser.setSurname(surname);
