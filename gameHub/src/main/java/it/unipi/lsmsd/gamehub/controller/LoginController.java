@@ -23,7 +23,7 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> createTutorial(@RequestBody RegistrationDTO registrationDTO){
+    public ResponseEntity<String> registration(@RequestBody RegistrationDTO registrationDTO){
         if(loginService.registrate(registrationDTO)){
             return ResponseEntity.ok("Signin Successfull");
         }
