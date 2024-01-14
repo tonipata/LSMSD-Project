@@ -14,17 +14,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Game {
     @Id
     private String id;
-    private String name;
+    private String Name;
     @Field("Release date")
     private String releaseDate;
-    private Double price;
+    private Double Price;
     @Field("About the game")
     private String aboutTheGame;
     @Field("Supported languages")
     private String supportedLanguages;
-    private String developers;
-    private String publishers;
-    private String categories;
-    private String genres;
+    private String Developers;
+    private String Publishers;
+    private String Categories;
+    private String Genres;
     // mettere i voti
 }

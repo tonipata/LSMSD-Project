@@ -22,15 +22,17 @@ public class GameController {
         if (pageable.getPageNumber() >= gameDTOPage.getTotalPages()) {
             // La pagina richiesta supera il numero massimo di pagine disponibili
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-            // Oppure personalizza un messaggio di errore o una risposta appropriata
+        }
+        if (gameDTOPage.isEmpty()) {
+            // La pagina è vuota
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
         return ResponseEntity.ok(gameDTOPage);
     }
     @PostMapping("/create")
     public ResponseEntity<Object> createGame(@RequestBody GameDTO gameDTO) {
-        // controllare i dati che vengono passati
-
         GameDTO game = gameService.createGame(gameDTO);
+
         return new ResponseEntity<>(game, HttpStatus.CREATED);
     }
     @DeleteMapping("delete/{id}")
