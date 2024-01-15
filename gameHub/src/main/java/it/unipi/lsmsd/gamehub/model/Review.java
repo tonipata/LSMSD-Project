@@ -1,8 +1,11 @@
 package it.unipi.lsmsd.gamehub.model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,10 +16,16 @@ import java.util.List;
 @Document(collection = "reviews")
 
 public class Review {
-    private String reviewID;
+    @Id
+    private String id;
+    @Field("Title")
     private String title;
+    @Field("Userscore")
     private int userScore;
+    @Field("Comment")
     private String comment;
-    private String userID;
-    private List<Like> likes;
+    @Field("Username")
+    private String username;
+    @Field("Like")
+    private Like like;
 }
