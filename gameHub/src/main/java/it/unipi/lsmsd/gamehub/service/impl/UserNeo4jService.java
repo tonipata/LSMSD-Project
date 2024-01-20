@@ -33,21 +33,14 @@ public class UserNeo4jService implements IUserNeo4jService {
     @Override
     public void SyncUser() {
         List<User> usersMongo = loginRepository.findAll();
-        for(User user : usersMongo) {
-            UserNeo4j userNeo4j = convertUser(user);
-            userNeo4jRepository.save(userNeo4j);
-        }
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserNeo4j> userNeo4js = usersMongo.stream().map(User->modelMapper.map(User, UserNeo4j.class)).toList();
+        userNeo4jRepository.saveAll(userNeo4js);
     }
     public void loadGames() {
         List<Game> games = gameRepository.findAll();
         ModelMapper modelMapper = new ModelMapper();
         List<GameNeo4j> graphGames = games.stream().map(Game->modelMapper.map(Game, GameNeo4j.class)).toList();
         gameNeo4jRepository.saveAll(graphGames);
-    }
-    private UserNeo4j convertUser(User user) {
-        UserNeo4j userNeo4j = new UserNeo4j();
-        userNeo4j.setId(user.getId());
-        userNeo4j.setUsername(user.getUsername());
-        return userNeo4j;
     }
 }
