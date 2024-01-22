@@ -32,7 +32,7 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/prova2")
+    @GetMapping("/reviewAggr1")
     public ResponseEntity<List<ReviewDTOAggregation>> retrieveAggregateFirstAndLastUserLike() {
         List<ReviewDTOAggregation> reviewList = review2Service.retrieveAggregateFirstAndLastUserLike();
 
@@ -43,7 +43,7 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/prova3")
+    @GetMapping("/reviewAggr2")
     public ResponseEntity<List<ReviewDTOAggregation2>> findAggregation3() {
         List<ReviewDTOAggregation2> reviewList = review2Service.findAggregation3();
 
