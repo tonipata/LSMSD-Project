@@ -28,4 +28,5 @@ public class Review {
     private String username;
     @Field("Like")
     private Like like;
+    //RICORDARSI IL CAMPO likeCount
 }
