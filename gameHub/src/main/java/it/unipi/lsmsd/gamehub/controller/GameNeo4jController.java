@@ -21,19 +21,10 @@ public class GameNeo4jController {
 
     @Autowired
     GameNeo4jService gameNeo4jService;
-    /*@GetMapping("/wishlist")
-    public ResponseEntity<List<GameNeo4j>> getUSerWishlist(@RequestBody String username) {
-        List<GameNeo4j> gameList = gameNeo4jService.getUserWishlist(username);
-        if (!gameList.isEmpty()) {
-            return ResponseEntity.ok(gameList);
-        }
-        System.out.println("gamelist empty");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }*/
 
 
 
-    @GetMapping("/provaNeo")
+    @GetMapping("/getGameByName")
     public ResponseEntity<GameNeo4j> getGameByName(@RequestParam String name) {
         GameNeo4j gameList = gameNeo4jService.getGameByTitle(name);
         if (gameList!=null) {
@@ -43,7 +34,7 @@ public class GameNeo4jController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/provaNeo2")
+    @GetMapping("/getGamesIngoingLinks")
     public ResponseEntity<Integer> getGamesIngoingLinks(@RequestParam String name) {
        Integer countLinks= gameNeo4jService.getGamesIngoingLinks(name);
         if (countLinks!=null) {
