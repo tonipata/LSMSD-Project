@@ -6,7 +6,10 @@ import it.unipi.lsmsd.gamehub.DTO.GameDTOAggregation2;
 import it.unipi.lsmsd.gamehub.model.Game;
 import it.unipi.lsmsd.gamehub.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +51,20 @@ public class GameController {
         }
         System.out.println("gamelist empty");
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<Page<Game>> showGames(@PageableDefault(sort = { "id" }, size = 50) Pageable pageable) {
+        Page<Game> gameDTOPage = gameService.getAll(pageable);
+        if (pageable.getPageNumber() >= gameDTOPage.getTotalPages()) {
+            // La pagina richiesta supera il numero massimo di pagine disponibili
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        if (gameDTOPage.isEmpty()) {
+            // La pagina è vuota
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+        return ResponseEntity.ok(gameDTOPage);
     }
 
 
