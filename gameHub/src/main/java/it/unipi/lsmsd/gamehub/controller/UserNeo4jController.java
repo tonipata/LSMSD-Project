@@ -78,7 +78,7 @@ public class UserNeo4jController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/provaFriendsOfFriends")
+    @GetMapping("/FriendsOfFriends")
     public ResponseEntity<List<UserNeo4j>> getFriendsOfFriends(@RequestParam String username){
         List<UserNeo4j> userNeo4jList=userNeo4jService.getFriendsOfFriends(username);
         if (!userNeo4jList.isEmpty()) {
@@ -89,7 +89,7 @@ public class UserNeo4jController {
     }
 
     //Query per amici suggeriti
-    @GetMapping("/provaSuggestFriends")
+    @GetMapping("/SuggestFriends")
     public ResponseEntity<List<UserNeo4j>> getSuggestUsers(@RequestParam String username){
 
         //get the user followed by the username
