@@ -18,5 +18,8 @@ public interface IGameService {
 
     public List<GameDTOAggregation2> findAggregation4();
 
+    //toni ha messo Page<GameDTO>
+    public Page<Game> getAll(Pageable pageable);
+
 
 }
