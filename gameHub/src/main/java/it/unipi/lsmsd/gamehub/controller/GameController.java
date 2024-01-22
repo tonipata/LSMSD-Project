@@ -31,7 +31,7 @@ public class GameController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/prova")
+    @GetMapping("/gameAggr1")
     public ResponseEntity<List<GameDTOAggregation>> retrieveAggregateGamesByGenresAndSortByScore() {
         List<GameDTOAggregation> gameList = gameService.retrieveAggregateGamesByGenresAndSortByScore();
 
@@ -42,7 +42,7 @@ public class GameController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @GetMapping("/prova4")
+    @GetMapping("/gameAggr2")
     public ResponseEntity<List<GameDTOAggregation2>> findAggregation() {
         List<GameDTOAggregation2> gameList = gameService.findAggregation4();
 
