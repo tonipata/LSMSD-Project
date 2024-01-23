@@ -7,7 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-
 public class GameDTO {
     private String id;
     private String name;
@@ -20,5 +19,4 @@ public class GameDTO {
     private String categories;
     private String genres;
     // mettere i voti
-    private int avgScore;
 }

@@ -2,13 +2,8 @@ package it.unipi.lsmsd.gamehub.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.index.CompoundIndexes;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,42 +11,20 @@ import java.util.List;
 @Setter
 @ToString
 @Document(collection = "games")
-
-@CompoundIndexes({
-        @CompoundIndex(name = "genres_avgScore", def = "{'genres' : 1, 'avgScore': 1}")
-})
-
 public class Game {
     @Id
     private String id;
-    @Field("name")
-    private String name;
-    @Indexed
-    @Field("genres")
-    private String genres;
-    @Field("releaseDate")
+    private String Name;
+    @Field("Release date")
     private String releaseDate;
-    @Indexed
-    @Field("avgScore")
-    private int avgScore;
-    @Field("Price")
-    private double price;
-
+    private Double Price;
     @Field("About the game")
     private String aboutTheGame;
     @Field("Supported languages")
     private String supportedLanguages;
-
-    @Field("Developers")
-    private String developers;
-    @Field("Publishers")
-    private String publishers;
-    @Field("Categories")
-    private String categories;
-    @Field("URL")
-    private URL URL;
-    @Field("Reviews")
-    private List<Review> reviews;
-
-
+    private String Developers;
+    private String Publishers;
+    private String Categories;
+    private String Genres;
+    // mettere i voti
 }
