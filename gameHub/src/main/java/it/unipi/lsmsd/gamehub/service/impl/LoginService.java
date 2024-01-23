@@ -53,8 +53,8 @@ public class LoginService implements ILoginService {
             return new ResponseEntity<>("Errore durante il recupero del ruolo dell'utente", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        User u = loginRepository.findByUsername(username);
-        return Objects.equals(u.getPassword(), password);
+        /*User u = loginRepository.findByUsername(username);
+        return Objects.equals(u.getPassword(), password);*/
 
     }
 
