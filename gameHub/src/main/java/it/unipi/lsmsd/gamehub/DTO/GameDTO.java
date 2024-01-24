@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+
 public class GameDTO {
     private String id;
     private String name;
@@ -21,6 +22,5 @@ public class GameDTO {
     private String publishers;
     private String categories;
     private String genres;
-    // mettere i voti
     private Integer avgScore;
 }

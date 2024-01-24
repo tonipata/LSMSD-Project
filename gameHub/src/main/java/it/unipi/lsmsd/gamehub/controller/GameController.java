@@ -1,10 +1,5 @@
 package it.unipi.lsmsd.gamehub.controller;
 
-import it.unipi.lsmsd.gamehub.DTO.GameDTOAggregation;
-import it.unipi.lsmsd.gamehub.DTO.GameDTOAggregation2;
-import it.unipi.lsmsd.gamehub.model.Game;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-
 import io.swagger.annotations.ApiResponse;
 import it.unipi.lsmsd.gamehub.DTO.GameDTO;
 import it.unipi.lsmsd.gamehub.service.IGameService;
@@ -12,13 +7,10 @@ import it.unipi.lsmsd.gamehub.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping("game")
 @RestController
@@ -27,6 +19,7 @@ public class GameController {
     private IGameService gameService;
     @Autowired
     private ILoginService iLoginService;
+
 
     @GetMapping("/searchFilter")
     public ResponseEntity<List<Game>> retrieveGamesByParameters(@RequestBody GameDTO gameDTO) {
@@ -73,7 +66,6 @@ public class GameController {
         }
         return ResponseEntity.ok(gameDTOPage);
     }
-
     @PostMapping("/create/{userId}")
     public ResponseEntity<Object> createGame(@PathVariable String userId,@RequestBody GameDTO gameDTO) {
         // controllo se si tratta di admin
