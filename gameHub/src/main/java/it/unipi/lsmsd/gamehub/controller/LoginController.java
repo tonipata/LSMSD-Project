@@ -1,7 +1,6 @@
 package it.unipi.lsmsd.gamehub.controller;
 
 import it.unipi.lsmsd.gamehub.DTO.LoginDTO;
-import it.unipi.lsmsd.gamehub.DTO.RegistrationDTO;
 import it.unipi.lsmsd.gamehub.service.ILoginService;
 import it.unipi.lsmsd.gamehub.utils.AuthResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +24,4 @@ public class LoginController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(authResponse);
         }
     }
-
-    @PostMapping("/signup")
-    public ResponseEntity<String> registration(@RequestBody RegistrationDTO registrationDTO){
-        if(loginService.registrate(registrationDTO)){
-            return ResponseEntity.ok("Signin Successfull");
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
-
 }
